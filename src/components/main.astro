@@ -1,0 +1,37 @@
+---
+import videoBg from '../assets/download.webm';
+---
+
+<!-- <main id="home" class="hero-background">
+    <div class="hero">
+        <div class="hero-content">
+            <p>Profesjonalne strzyżenie w Toruniu</p>
+            <h1>Black Barber</h1>
+            <div class="hero-buttons">
+                <a class="button button-call" href="tel:+48570008822">Zadzwoń teraz</a>
+                <a class="button button-location" href="#contact" rel="noreferrer">Lokalizacja</a>
+            </div>
+        </div>
+    </div>
+</main> -->
+
+<main id="home" class="hero-background">
+    <!-- Wideo w tle z prawidłową ścieżką i autostartem -->
+    <video autoplay muted loop playsinline preload="auto" class="video-bg">
+        <source src={videoBg} type="video/webm">
+    </video>
+    
+    <!-- Przyciemniająca nakładka -->
+    <div class="video-overlay"></div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <p>Profesjonalne strzyżenie w Toruniu</p>
+            <h1>Black Barber</h1>
+            <div class="hero-buttons">
+                <a class="button button-call" href="tel:+48570008822">Zadzwoń teraz</a>
+                <a class="button button-location" href="#contact">Lokalizacja</a>
+            </div>
+        </div>
+    </div>
+</main>

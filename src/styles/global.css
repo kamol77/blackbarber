@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import "tailwindcss";
+
+:root {
+	scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+
+nav{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	padding: 25px 5%;
+
+	background-color: #1a1a1a1a;
+  	backdrop-filter: blur(12px); /* Efekt rozmytego szkła */
+  	border-bottom: 1px solid #D4AF37; /* Subtelna, złota linia w tle */
+
+	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
+  	z-index: 1000;
+}
+
+img{
+	height: 42px;
+}
+
+ul{
+	display: flex;
+	gap: 50px;
+	list-style: none;
+}
+
+li{
+	display: flex;
+	align-items: center;
+}
+
+.nav-link{
+	font-size: 14px;
+	font-family: Cinzel;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: #FDFBF7;
+	text-decoration: none;
+	transition: color 0.25s ease, transform 0.2s ease;
+}
+
+.booksy{
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-family: Cinzel;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: #FDFBF7;
+	text-decoration: none;
+	border: 1px solid rgba(212,175,55,0.5);
+	padding: 0.75rem 1rem;
+	background: rgba(255,255,255,0.04);
+	backdrop-filter: blur(8px);
+	overflow: hidden;
+	transition: color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.booksy::after{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 40%);
+	opacity: 0;
+	transition: opacity 0.25s ease;
+	pointer-events: none;
+}
+
+.booksy:hover{
+	color: #FDFBF7;
+	border-color: rgba(212,175,55,0.9);
+	box-shadow: 0 0 16px rgba(212,175,55,0.12);
+	/* transform: translateY(-0.5px); */
+}
+
+.booksy:hover::after{
+	opacity: 1;
+}
+
+a:hover{
+	color: #D4AF37;
+	/* transform: translateY(-2px); */
+}
+
+/* MAIN */
+
+main {
+    background-color: #1A1A1A;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Zapobiega pojawianiu się pasków przewijania przez wideo */
+}
+
+/* Usunęliśmy stąd tło webm, bo CSS nie obsługuje odtwarzania wideo w background-image */
+main.hero-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 1. STYLIZACJA WIDEO W TLE */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Przeglądarka sama idealnie dociśnie i przytnie wideo do ekranu */
+    z-index: 1;
+    filter: grayscale(100%) contrast(145%) brightness(75%);
+}
+/* 2. NAKŁADKA PRZYCIEMNIAJĄCA (Zastępuje dawne ::before) */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* Twoje przyciemnienie 55% */
+    z-index: 2; /* Warstwa nad filmem, ale pod tekstem */
+}
+
+/* 3. SEKCJA Z TREŚCIĄ */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 20px;
+    position: relative;
+    z-index: 3; /* Wyciągamy całą treść nad wideo (1) i nakładkę (2) */
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 880px;
+    color: #FDFBF7;
+}
+
+.hero-content p {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    color: #D4AF37;
+}
+
+.hero-content h1 {
+    font-size: 3.3rem;
+    margin: 0;
+    font-family: Cinzel;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* PRZYCISKI (Zachowane Twoje oryginalne efekty) */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid rgba(212,175,55,0.6);
+    color: #FDFBF7;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    font-family: Cinzel;
+    background: rgba(255,255,255,0.04);
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: scale(0.85);
+    pointer-events: none;
+}
+
+.button:hover {
+    color: #111;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(212,175,55,0.12);
+}
+
+.button:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.button-call {
+    background-color: rgba(212, 175, 55, 0.12);
+}
+
+.button-location {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 
+main{
+	background-color: #1A1A1A;
+	min-height: 100vh;
+	width: 100%;
+	position: relative;
+}
+
+main.hero-background{
+	background-image: url('../assets/download.webm');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+main.hero-background::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+}
+
+.hero{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 120px 20px;
+	position: relative;
+	z-index: 1;
+}
+
+.hero-content{
+	text-align: center;
+	max-width: 880px;
+	color: #FDFBF7;
+}
+
+.hero-content p{
+	font-size: 0.85rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	margin-bottom: 1.2rem;
+	color: #D4AF37;
+}
+
+.hero-content h1{
+	font-size: 3.3rem;
+	margin: 0;
+	font-family: Cinzel;
+}
+
+.hero-buttons{
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	flex-wrap: wrap;
+	margin-top: 2rem;
+}
+
+.button{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+	padding: 1rem 1rem;
+	border-bottom: 1px solid rgba(212,175,55,0.6);
+	color: #FDFBF7;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	transition: color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+	font-family: Cinzel;
+	background: rgba(255,255,255,0.04);
+}
+
+.button::after{
+	content: '';
+	position: absolute;
+	top: -20%;
+	left: -20%;
+	width: 140%;
+	height: 140%;
+	background: radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 40%);
+	opacity: 0;
+	transition: opacity 0.25s ease, transform 0.25s ease;
+	transform: scale(0.85);
+	pointer-events: none;
+}
+
+.button:hover{
+	color: #111;
+	transform: translateY(-1px);
+	box-shadow: 0 12px 30px rgba(212,175,55,0.12);
+}
+
+.button:hover::after{
+	opacity: 1;
+	transform: scale(1);
+}
+
+.button-call{
+	background-color: rgba(212, 175, 55, 0.12);
+}
+
+.button-location{
+	background-color: rgba(255, 255, 255, 0.08);
+} */
+
+/* SERVICE */
+
+.service-section{
+	padding: 120px 5%;
+	background: #0f0f0f;
+	color: #FDFBF7;
+}
+
+.service-wrapper{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.service-header{
+	text-align: center;
+	margin-bottom: 2.5rem;
+}
+
+.service-header h2{
+	font-size: 2rem;
+	margin: 0 0 1rem;
+	font-family: Cinzel;
+}
+
+.service-header p{
+	max-width: 760px;
+	margin: 0 auto;
+	font-size: 1rem;
+	line-height: 1.8;
+	color: rgba(253, 251, 247, 0.85);
+}
+
+.service-table{
+	width: 100%;
+	border-collapse: collapse;
+	background: rgba(26, 26, 26, 0.96);
+	border: 1px solid rgba(212, 175, 55, 0.25);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+}
+
+.service-table th,
+.service-table td{
+	padding: 1.2rem 1.4rem;
+	font-weight: 100;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-table th{
+	text-align: left;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	color: #D4AF37;
+}
+
+.service-table td{
+	font-size: 1rem;
+}
+
+.service-table tr:hover{
+	background: rgba(212, 175, 55, 0.06);
+}
+
+.service-table tr:last-child td{
+	border-bottom: none;
+}
+
+.service-name{
+	font-weight: 600;
+}
+
+@media (max-width: 720px) {
+	.service-table th,
+	.service-table td{
+		padding: 1rem 0.8rem;
+	}
+}
+
+/* CONTACT */
+
+.contact-grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	align-items: start;
+}
+
+.contact-panel{
+	background: rgba(26,26,26,0.96);
+	border: 1px solid rgba(212,175,55,0.06);
+	padding: 2rem;
+	box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+}
+
+.contact-panel h3{
+	margin: 0 0 0.5rem;
+	font-family: Cinzel;
+	color: #FDFBF7;
+}
+
+.accent{ color: #D4AF37; margin-bottom: 0.75rem; display:block }
+
+.map-panel{ height: 420px; border: 1px solid rgba(255,255,255,0.04); overflow: hidden }
+
+.footer-bottom{ padding: 18px 5%; text-align: center; color: rgba(253,251,247,0.65); border-top: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem; background-color: #1a1a1a1a;}
+
+@media (max-width: 920px){
+	.contact-grid{ grid-template-columns: 1fr; }
+	.map-panel{ height: 320px }
+}
